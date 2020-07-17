@@ -1,0 +1,40 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+        name = Huey
+        signingkey = 54C82E718C137231
+        email = hello@huey.xyz
+[push]
+        default = simple
+[merge "npm-merge-driver"]
+        name = automatically merge npm lockfiles
+        driver = npx npm-merge-driver merge %A %O %B %P
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+
+[alias]
+        cap = "!f() { git commit -m \"$@\"; }; f"
+
+        # DEPENDENCY
+        dep ="!f(){ git cap \"📦 DEPENDENCY: $@\"; }; f"
+
+        # NEW
+        new = !f(){ git cap \""✨ NEW: $@\"; }; f"
+
+        # IMPROVE
+        improve = !f(){ git cap \""⚡ IMRPOVE: $@\"; }; f"
+
+        # TEST
+        test = !f(){ git cap \""🤖 TEST: $@\"; }; f"
+
+        # BUG
+        bug = !f(){ git cap \"" BUGFIX: $@\"; }; f"
+[commit]
+#       gpgsign = true
+[gpg]
+        program = gpg2
+[pull]
+        ff = only
