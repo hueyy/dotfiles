@@ -1,9 +1,9 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-        name = Huey
+	name = Huey
         signingkey = 54C82E718C137231
-        email = hello@huey.xyz
+	email = hello@huey.xyz
 [push]
         default = simple
 [merge "npm-merge-driver"]

@@ -16,11 +16,21 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+if [ -z "$SSH_AUTH_SOCK" ]; then
+	# Check for a currently running instance of the agent
+	RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+	if [ "$RUNNING_AGENT" = "0" ]; then
+		# Launch a new instance of the agent
+		ssh-agent -s &> .ssh/ssh-agent
+       	fi
+	#eval `cat .ssh/ssh-agent`
+fi
+
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export DISPLAY=127.0.0.1:0.0
-#export DOCKER_HOST=tcp://localhost:2375
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0.0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
@@ -40,4 +50,8 @@ export GPG_TTY=$(tty)
 
 ocr() {
   ocrmypdf -l eng --rotate-pages --deskew --jobs 4 $1 $1
-} 
+}
+
+destreamer() {
+  pushd ~/.bin/destreamer/ && ./destreamer.sh -k --cc -i "$@" && popd
+}
