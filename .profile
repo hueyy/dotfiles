@@ -27,9 +27,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0.0
+export DISPLAY=192.168.10.243:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer

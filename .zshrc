@@ -100,3 +100,5 @@ source $ZSH/oh-my-zsh.sh
 #
 
 SPACESHIP_DOCKER_SHOW=false
+
+source $HOME/.profile
