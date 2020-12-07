@@ -37,7 +37,7 @@ fullscreen_hotkey = F11
 ; window resizing options
 win_width_percent  = 100 ; set to 0 to disable
 win_height_percent = 50 ; set to 0 to disable
-win_visible_transparency = 200	; the transparency of the terminal window when it is visible 0 (transparent) through 255 (opaque)
+win_visible_transparency = 255	; the transparency of the terminal window when it is visible 0 (transparent) through 255 (opaque)
 
 
 
@@ -46,14 +46,45 @@ SetTitleMatchMode, RegEx
 Hotkey, %hotkey%, TheHotKey	; initialize the hotkey specified above
 Hotkey, %fullscreen_hotkey%, FullscreenHotKey
 
-win_topleft_x := A_ScreenWidth * ((100 - win_width_percent)/2)/100 ; calculate the top left (x,y)
-win_topleft_y := 25
-
-win_height := A_ScreenHeight * (win_height_percent/100) ; calculate the window width, height
-win_width := A_ScreenWidth * (win_width_percent/100)
+currentMonitor_index := 0
 
 currentWindow := 0
 previousWindow := 0 ; so we can restore focus to previous window
+
+
+GetMonitorIndexFromWindow(windowHandle)
+{
+	; Starts with 1.
+	monitorIndex := 1
+	
+	WinGetPos, windowX, windowY, , , A
+	SysGet, monitorCount, MonitorCount
+	Loop, %monitorCount%
+	{
+		SysGet, tempMon, Monitor, %A_Index%
+		if ((windowX >= tempMonLeft) and (windowY >= tempMonTop)
+			and (windowX <= tempMonRight) and (windowY <= tempMonBottom))
+		{
+			monitorIndex := A_Index
+			break
+		}
+	}
+	
+	return monitorIndex
+}
+
+GetCurrentWorkAreaCoordinates()
+{
+	WinGet, currentWindow, ID, A
+	currentMonitor_index := GetMonitorIndexFromWindow(currentWindow)
+	SysGet, currentMonitor, Monitor, %currentMonitor_index%
+	
+	maxHeight := currentMonitorBottom - currentMonitorTop
+	height := maxHeight * 0.5
+	
+	return Object("x", currentMonitorLeft, "y", currentMonitorTop, "width", currentMonitorRight - currentMonitorLeft, "height", height, "maxHeight", maxHeight)
+}
+
 
 loop {	; loop infinitely
 	WinGet, currentWindow, ID, A	; get the current active window
@@ -69,7 +100,8 @@ loop {	; loop infinitely
 TheHotKey: ; setup our hotkey
 	IfWinExist, %win_title% ; ensure our window even exists
 	{
-		WinMove, %win_title%,, %win_topleft_x%, %win_topleft_y%, %win_width%, %win_height%	; make sure it's in the correct location and has correct size
+		target := GetCurrentWorkAreaCoordinates()
+		WinMove, %win_title%,, % target["x"], % target["y"], % target["width"], % target["height"]	; make sure it's in the correct location and has correct size
 		IfWinNotActive, %win_title%	; if the window is not active and our hotkey was fired, let's show it
 		{
 			WinSet, Transparent, %win_visible_transparency%, %win_title%
@@ -89,12 +121,14 @@ FullscreenHotKey:
 		IfWinActive, %win_title%
 		{
 			WinGetPos, , , , terminal_height, %win_title%
-			if(terminal_height = win_height)
+			target := GetCurrentWorkAreaCoordinates()
+			
+			if(terminal_height = target["height"])
 			{
-				WinMove, %win_title%,,%win_topleft_x%, %win_topleft_y%, %win_width%, %A_ScreenHeight%
+				WinMove, %win_title%,,% target["x"], % target["y"], % target["width"], % target["maxHeight"]
 			}
 			Else {
-				WinMove, %win_title%,,%win_topleft_x%, %win_topleft_y%, %win_width%, %win_height%
+				WinMove, %win_title%,, % target["x"], % target["y"], % target["width"], % target["height"]
 			}
 		}
 	}
