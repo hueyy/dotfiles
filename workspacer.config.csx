@@ -96,7 +96,8 @@ Action<IConfigContext> doConfig = (context) =>
 		!w.ProcessName.Contains("steam") &&
 		!w.Title.Contains("Installing") &&
 		!w.Title.Contains("Installer") &&
-		!w.Title.Contains("Media viewer")
+		!w.Title.Contains("Media viewer") &&
+		!w.ProcessName.Contains("alacritty")
 	);
 };
 return doConfig;
