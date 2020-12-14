@@ -29,7 +29,7 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
-export DISPLAY=192.168.10.243:0.0
+export DISPLAY=192.168.10.96:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer
@@ -53,5 +53,9 @@ ocr() {
 }
 
 destreamer() {
-  pushd ~/.bin/destreamer/ && ./destreamer.sh -k --cc -i "$@" && popd
+  pushd ~/.bin/destreamer/ && ./destreamer.sh -k --cc -o ~/Desktop/ -i "$@" && popd
+}
+
+decodeFont() {
+  base64 --decode $1.txt 2> /dev/null > $1.bin
 }
