@@ -26,6 +26,11 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 	#eval `cat .ssh/ssh-agent`
 fi
 
+# start tmux on startup
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
