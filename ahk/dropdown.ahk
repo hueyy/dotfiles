@@ -16,13 +16,6 @@
 
 
 
-;;;;;;;;; GLOBAL AHK SETTINGS (DO NOT MODIFY) ;;;;;;;;;
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-
-
-
 ;;;;;;;;; GLOBAL VARIABLES (CHANGE THESE!) ;;;;;;;;;
 ; title of the terminal window
 ; note - this script will do nothing if there is no matching window
@@ -62,7 +55,7 @@ GetMonitorIndexFromWindow(windowHandle)
 	Loop, %monitorCount%
 	{
 		SysGet, tempMon, Monitor, %A_Index%
-		if ((windowX >= tempMonLeft) and (windowY >= tempMonTop)
+		If((windowX >= tempMonLeft) and (windowY >= tempMonTop)
 			and (windowX <= tempMonRight) and (windowY <= tempMonBottom))
 		{
 			monitorIndex := A_Index
@@ -123,7 +116,7 @@ FullscreenHotKey:
 			WinGetPos, , , , terminal_height, %win_title%
 			target := GetCurrentWorkAreaCoordinates()
 			
-			if(terminal_height = target["height"])
+			If(terminal_height = target["height"])
 			{
 				WinMove, %win_title%,,% target["x"], % target["y"], % target["width"], % target["maxHeight"]
 			}

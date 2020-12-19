@@ -64,3 +64,5 @@ destreamer() {
 decodeFont() {
   base64 --decode $1.txt 2> /dev/null > $1.bin
 }
+
+alias bfg="java -jar ~/.bin/bfg.jar"
