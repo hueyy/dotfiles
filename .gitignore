@@ -3,3 +3,4 @@
 .ssh/*
 !.ssh/*.secret
 ahk/personal_substitutions.ahk
+.vim/.netrwhist

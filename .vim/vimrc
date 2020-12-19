@@ -2,3 +2,17 @@ set hlsearch    " highlight all search results
 set ignorecase  " do case insensitive search 
 set incsearch   " show incremental search results as you type
 set number      " display line number
+
+" tabs are 2 spaces
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+syntax on
+
+set laststatus=2
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
