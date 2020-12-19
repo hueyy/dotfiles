@@ -1,2 +1,4 @@
 .gitsecret/keys/random_seed
 !*.secret
+.ssh
+ahk/personal_substitutions.ahk
