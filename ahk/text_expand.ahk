@@ -1,4 +1,4 @@
-﻿#Hotstring O SI
+#Hotstring O SI
 
 ; emojis
 #IfWinActive
@@ -12,16 +12,16 @@
 
 
 ; common substitutions 
+; sleep as a workaround for vscode
+; https://github.com/yzhang-gh/vscode-markdown/issues/200
 #IfWinActive
 ;::(c)::©
-::(r)::®
+:*:(r)::{Sleep 50}®
 ::tm::™
-:::degree::°
-:::euro::€
-:::pound::£
+:*::euro::{Sleep 50}€
+:*::pound::£
 :*:sss::§
-::--::–
-::---::—
+::--::{Sleep 50}—
 ::-->::→
 ::->::→
 ::<—::←
@@ -38,18 +38,19 @@
 ; for compatibility with Markdown All in One extension in vscode: k500 T
 SetTitleMatchMode, 2
 #If WinActive(".md ahk_exe Code.exe") or  WinActive("ahk_exe WINWORD.EXE")
-::!=::≠
-::+-::±
-::<=::≤
-::>=::≥
-::1/2::½
-::1/3::⅓
-::1/4::¼
-::1/8::⅛
-::2/3::⅔
-::3/4::¾
-::3/8::⅜
-::5/8::⅝
-::7/8::⅞
-:::square::²
-:*?:...::…
+::!=::{Sleep 50}≠
+::+-::{Sleep 50}±
+::<=::{Sleep 50}≤
+::>=::{Sleep 50}≥
+::1/2::{Sleep 50}½
+::1/3::{Sleep 50}⅓
+::1/4::{Sleep 50}¼
+::1/8::{Sleep 50}⅛
+::2/3::{Sleep 50}⅔
+::3/4::{Sleep 50}¾
+::3/8::{Sleep 50}⅜
+::5/8::{Sleep 50}⅝
+::7/8::{Sleep 50}⅞
+:::square::{Sleep 50}²
+:*?:...::{Sleep 50}…
+
