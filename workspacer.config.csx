@@ -102,7 +102,10 @@ Action<IConfigContext> doConfig = (context) =>
 		!w.Title.Contains("Quick Format Citation") && // Zotero / Juris-M MSWord dialog
 		w.Class != "#32770" && // vscode confirmation dialog
 		w.Class != "OperationStatusWindow" && // explorer.exe move/copy/delete
-		w.Class != "Qt5QWindowIcon" && w.Class != "Qt5QWindowOwnDC" // nextcloud
+		!(
+			(w.Class == "Qt5QWindowIcon" || w.Class == "Qt5QWindowOwnDC") &&
+			w.Title.Contains("Nextcloud")
+		) // nextcloud
 	);
 };
 return doConfig;
