@@ -85,8 +85,6 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddFilter((w) =>
 		!w.Title.Contains("Snip")  &&
 		!w.Title.Contains("Save as") &&
-		!w.Title.Contains("#32770") && // deletion dialog
-		!w.Title.Contains("OperationStatusWindow") && // copy/move dialog
 		!w.Title.Contains("User Account Control") &&
 		!w.Title.Contains("UAC") &&
 		!w.Title.Contains("Volume Mixer") &&
@@ -97,7 +95,14 @@ Action<IConfigContext> doConfig = (context) =>
 		!w.Title.Contains("Installing") &&
 		!w.Title.Contains("Installer") &&
 		!w.Title.Contains("Media viewer") &&
-		!w.ProcessName.Contains("alacritty")
+		!w.ProcessName.Contains("alacritty") &&
+		!w.Title.Contains("Microsoft Teams") &&
+		!w.Title.Contains("Messenger") &&
+		!w.ProcessName.Contains("Bitwarden") &&
+		!w.Title.Contains("Quick Format Citation") && // Zotero / Juris-M MSWord dialog
+		w.Class != "#32770" && // vscode confirmation dialog
+		w.Class != "OperationStatusWindow" && // explorer.exe move/copy/delete
+		w.Class != "Qt5QWindowIcon" && w.Class != "Qt5QWindowOwnDC" // nextcloud
 	);
 };
 return doConfig;
