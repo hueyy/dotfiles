@@ -19,19 +19,22 @@
         cap = "!f() { git commit -m \"$@\"; }; f"
 
         # DEPENDENCY
-        dep ="!f(){ git cap \"📦 DEPENDENCY: $@\"; }; f"
+        dep ="!f(){ git cap \"📦 dep: $@\"; }; f"
 
         # NEW
-        new = !f(){ git cap \""✨ NEW: $@\"; }; f"
+        new = !f(){ git cap \""✨ new: $@\"; }; f"
 
         # IMPROVE
-        improve = !f(){ git cap \""⚡ IMRPOVE: $@\"; }; f"
+        improve = !f(){ git cap \""⚡improve: $@\"; }; f"
 
         # TEST
-        test = !f(){ git cap \""🤖 TEST: $@\"; }; f"
+        test = !f(){ git cap \""🤖 test: $@\"; }; f"
 
         # BUG
-        bug = !f(){ git cap \"" BUGFIX: $@\"; }; f"
+        bug = !f(){ git cap \""🐛 bug: $@\"; }; f"
+
+        # DOC
+        doc = !f(){ git cap \"" 📖 doc: $@\"; }; f"
 [commit]
 #       gpgsign = true
 [gpg]

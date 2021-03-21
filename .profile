@@ -34,7 +34,7 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
-export DISPLAY=192.168.10.115:0.0
+export DISPLAY=192.168.10.92:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer
@@ -67,3 +67,6 @@ decodeFont() {
 
 alias bfg="java -jar ~/.bin/bfg.jar"
 alias lh='ls -trhgGN --color=always | cut -d" " -f3-'
+
+export DENO_INSTALL="/home/huey/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
