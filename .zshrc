@@ -68,7 +68,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  alias-finder
+  command-not-found
+  docker
+  docker-compose
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,3 +108,7 @@ source $ZSH/oh-my-zsh.sh
 SPACESHIP_DOCKER_SHOW=false
 
 source $HOME/.profile
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+

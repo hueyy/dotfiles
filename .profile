@@ -45,28 +45,11 @@ PATH="$HOME/.npm-global/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-alias youtube-dl="youtube-dl -f best --add-metadata --all-subs --embed-subs --embed-thumbnail"
-
 export GPG_TTY=$(tty)
-
-ocr() {
-  ocrmypdf -l eng --rotate-pages --deskew --jobs 4 $1 $1
-}
-
-destreamer() {
-  pushd ~/.bin/destreamer/ && ./destreamer.sh -k --cc -o ~/Desktop/ -i "$@" && popd
-}
-
-decodeFont() {
-  base64 --decode $1.txt 2> /dev/null > $1.bin
-}
-
-alias bfg="java -jar ~/.bin/bfg.jar"
-alias lh='ls -trhgGN --color=always | cut -d" " -f3-'
 
 export DENO_INSTALL="/home/huey/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -74,3 +57,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source "$HOME/.aliases"
+
+eval "$(zoxide init zsh)"

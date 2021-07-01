@@ -1,0 +1,33 @@
+# standard unix commands replacements
+alias ls="lsd"
+alias bfg="java -jar ~/.bin/bfg.jar"
+alias diff="delta"
+alias df="duf"
+alias man="tldr"
+
+# git
+alias bfg="java -jar ~/.bin/bfg.jar"
+
+# WSL
+alias mklink=" . mklink.sh"
+
+# Custom
+
+## Internet Archive
+ia(){
+  curl https://web.archive.org/save/$1
+}
+
+ocr() {
+  ocrmypdf -l eng --rotate-pages --deskew --jobs 4 $1 $1
+}
+
+destreamer() {
+  pushd ~/.bin/destreamer/ && ./destreamer.sh -k --cc -o ~/Desktop/ -i "$@" && popd
+}
+
+decodeFont() {
+  base64 --decode $1.txt 2> /dev/null > $1.bin
+}
+
+alias youtube-dl="youtube-dl -f best --add-metadata --all-subs --embed-subs --embed-thumbnail"

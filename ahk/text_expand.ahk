@@ -9,12 +9,14 @@
 :*::like::👍
 :*::dislike::👎
 :*::ok::👌
+#IfWinActive
 
 
 ; common substitutions 
 ; sleep as a workaround for vscode
 ; https://github.com/yzhang-gh/vscode-markdown/issues/200
-#IfWinActive
+SetTitleMatchMode, 2
+#IfWinActive !WinActive(".md ahk_exe Code.exe alacritty.exe")
 ;::(c)::©
 :*:(r)::{Sleep 50}®
 ::tm::™
@@ -53,4 +55,5 @@ SetTitleMatchMode, 2
 ::7/8::{Sleep 50}⅞
 :::square::{Sleep 50}²
 :*?:...::{Sleep 50}…
+#IfWinActive
 
