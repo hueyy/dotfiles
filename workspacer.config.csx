@@ -99,6 +99,9 @@ Action<IConfigContext> doConfig = (context) =>
 		!w.Title.Contains("Microsoft Teams") &&
 		!w.Title.Contains("Messenger") &&
 		!w.ProcessName.Contains("Bitwarden") &&
+		!w.ProcessName.Contains("Spotify") &&
+		!w.ProcessName.Contains("XWin_MobaX.exe") &&
+		!w.ProcessName.Contains("Microsoft.WindowsCalculator") &&
 		!w.Title.Contains("Quick Format Citation") && // Zotero / Juris-M MSWord dialog
 		w.Class != "#32770" && // vscode confirmation dialog
 		w.Class != "OperationStatusWindow" && // explorer.exe move/copy/delete
