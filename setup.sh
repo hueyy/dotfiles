@@ -53,4 +53,7 @@ curl -sS https://webinstall.dev/zoxide | bash
 
 npm i -g tldr gtop
 
+# commitizen
+sudo pip3 install -U Commitizen
+
 source ~/.profile

@@ -61,3 +61,5 @@ export NVM_DIR="$HOME/.nvm"
 source "$HOME/.aliases"
 
 eval "$(zoxide init zsh)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
