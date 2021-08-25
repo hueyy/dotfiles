@@ -31,3 +31,5 @@ decodeFont() {
 }
 
 alias youtube-dl="youtube-dl -f best --add-metadata --all-subs --embed-subs --embed-thumbnail"
+
+alias git-commit-no-edit-date="env GIT_AUTHOR_DATE=\"$(git log --no-walk --format=%ad)\" GIT_COMMITTER_DATE=\"$(git log --no-walk --format=%cd)\" git commit --amend"
