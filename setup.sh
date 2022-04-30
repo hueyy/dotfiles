@@ -51,9 +51,6 @@ nvm install --lts=fermium
 # zoxide
 curl -sS https://webinstall.dev/zoxide | bash
 
-npm i -g tldr gtop
-
-# commitizen
-sudo pip3 install -U Commitizen
+npm i -g tldr gtop commitizen
 
 source ~/.profile
