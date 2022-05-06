@@ -27,14 +27,13 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # start tmux on startup
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
-export DISPLAY=192.168.10.92:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer
