@@ -96,6 +96,7 @@ Action<IConfigContext> doConfig = (context) =>
 		!w.Title.Contains("Installer") &&
 		!w.Title.Contains("Media viewer") &&
 		!w.ProcessName.Contains("alacritty") &&
+		!(w.ProcessName == "Tabby.exe") && 
 		!w.Title.Contains("Microsoft Teams") &&
 		!w.Title.Contains("Messenger") &&
 		!w.ProcessName.Contains("Bitwarden") &&
