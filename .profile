@@ -62,3 +62,7 @@ source "$HOME/.aliases"
 eval "$(zoxide init zsh)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# fly.io
+export FLYCTL_INSTALL="/home/huey/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
