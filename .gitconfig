@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
   name = Huey
-  signingkey = 54C82E718C137231
+  signingkey = 733C1AD5BD4F9B4CF5B2677B54C82E718C137231
   email = hello@huey.xyz
 [pager]
   diff = delta
@@ -51,7 +51,7 @@
   doc = !f(){ git cap \"" 📖 doc: $@\"; }; f"
 
 [commit]
-#       gpgsign = true
+  gpgsign = true
 [gpg]
   program = gpg2
 [pull]
