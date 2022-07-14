@@ -22,7 +22,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 	if [ "$RUNNING_AGENT" = "0" ]; then
 		# Launch a new instance of the agent
 		ssh-agent -s &> .ssh/ssh-agent
-       	fi
+			fi
 	#eval `cat .ssh/ssh-agent`
 fi
 
@@ -49,9 +49,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export GPG_TTY=$(tty)
-
-export DENO_INSTALL="/home/huey/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

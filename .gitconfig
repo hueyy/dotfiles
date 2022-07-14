@@ -1,9 +1,9 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = Huey
-        signingkey = 54C82E718C137231
-	email = hello@huey.xyz
+  name = Huey
+  signingkey = 54C82E718C137231
+  email = hello@huey.xyz
 [pager]
   diff = delta
   log = delta
@@ -19,41 +19,42 @@
   file-style = bold yellow ul
   file-decoration-style = none
 [push]
-        default = simple
+  default = simple
 [merge "npm-merge-driver"]
-        name = automatically merge npm lockfiles
-        driver = npx npm-merge-driver merge %A %O %B %P
+  name = automatically merge npm lockfiles
+  driver = npx npm-merge-driver merge %A %O %B %P
 [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [alias]
-        cap = "!f() { git commit -m \"$@\"; }; f"
+  cap = "!f() { git commit -m \"$@\"; }; f"
 
-        # DEPENDENCY
-        dep ="!f(){ git cap \"📦 dep: $@\"; }; f"
+  # DEPENDENCY
+  dep ="!f(){ git cap \"📦 dep: $@\"; }; f"
 
-        # NEW
-        new = !f(){ git cap \""✨ new: $@\"; }; f"
+  # NEW
+  new = !f(){ git cap \""✨ new: $@\"; }; f"
 
-        # IMPROVE
-        improve = !f(){ git cap \""⚡improve: $@\"; }; f"
+  # IMPROVE
+  improve = !f(){ git cap \""⚡improve: $@\"; }; f"
 
-        # TEST
-        test = !f(){ git cap \""🤖 test: $@\"; }; f"
+  # TEST
+  test = !f(){ git cap \""🤖 test: $@\"; }; f"
 
-        # BUG
-        bug = !f(){ git cap \""🐛 bug: $@\"; }; f"
+  # BUG
+  bug = !f(){ git cap \""🐛 bug: $@\"; }; f"
 
-        # DOC
-        doc = !f(){ git cap \"" 📖 doc: $@\"; }; f"
+  # DOC
+  doc = !f(){ git cap \"" 📖 doc: $@\"; }; f"
+
 [commit]
 #       gpgsign = true
 [gpg]
-        program = gpg2
+  program = gpg2
 [pull]
-        ff = only
+  ff = only
 [init]
-	defaultBranch = main
+  defaultBranch = main
