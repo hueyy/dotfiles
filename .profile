@@ -66,3 +66,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # fly.io
 export FLYCTL_INSTALL="/home/huey/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# golang
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$(go env GOROOT)/misc/wasm"
