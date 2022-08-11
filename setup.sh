@@ -1,7 +1,9 @@
 # assume git clone to ~
 sudo sh -c "echo 'deb https://gitsecret.jfrog.io/artifactory/git-secret-deb git-secret main' >> /etc/apt/sources.list"
 wget -qO - 'https://gitsecret.jfrog.io/artifactory/api/gpg/key/public' | sudo apt-key add -
-sudo apt update && sudo apt install git vim nano ncdu zsh git-secret -y
+echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
+sudo apt update && sudo apt install git vim nano ncdu zsh git-secret exa nala -y
 mkdir -p ~/.bin
 
 ln -s ~/.dotfiles/.ssh ~
