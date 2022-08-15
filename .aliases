@@ -4,6 +4,8 @@ alias bfg="java -jar ~/.bin/bfg.jar"
 alias diff="delta"
 alias df="duf"
 alias man="tldr"
+alias apt="nala"
+alias cat="bat"
 
 # git
 alias bfg="java -jar ~/.bin/bfg.jar"
