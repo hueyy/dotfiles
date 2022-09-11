@@ -1,4 +1,5 @@
 # standard unix commands replacements
+alias sudo="sudo "
 alias ls="lsd"
 alias bfg="java -jar ~/.bin/bfg.jar"
 alias diff="delta"

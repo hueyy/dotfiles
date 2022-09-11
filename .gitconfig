@@ -58,3 +58,7 @@
   ff = only
 [init]
   defaultBranch = main
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /home/huey/.config/netlify/helper/git-config
