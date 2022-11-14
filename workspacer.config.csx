@@ -79,8 +79,10 @@ Action<IConfigContext> doConfig = (context) =>
   context.WindowRouter.AddFilter((w) =>
     !(w.ProcessName == "SyncTrayzor.exe") &&
     !(w.ProcessName == "Tabby.exe") && 
+	!w.Title.Contains("Tabby Terminal") && 
     !(w.ProcessName == "vcxsrv.exe") &&
     !(w.ProcessName == "XWin_MobaX.exe") &&
+	!(w.ProcessName == "Everything.exe") &&
     !(w.Title == "Bingsu") &&
     !w.ProcessName.Contains("alacritty") &&
     !w.ProcessName.Contains("Bitwarden") &&
