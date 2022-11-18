@@ -33,7 +33,8 @@ fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
-
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Added by serverless binary installer
@@ -50,9 +51,8 @@ eval "$(pyenv virtualenv-init -)"
 
 export GPG_TTY=$(tty)
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 source "$HOME/.aliases"
 
@@ -68,3 +68,6 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# flatpak
+export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/huey/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"

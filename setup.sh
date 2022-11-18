@@ -45,14 +45,26 @@ sudo nala install -y $DOWNLOADS_FOLDER/$CURLIE_FILENAME
 rm $DOWNLOADS_FOLDER/$CURLIE_FILENAME
 
 # install node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install --lts=gallium
+nvm use gallium
 
 # zoxide
 curl -sS https://webinstall.dev/zoxide | bash
 
 npm i -g gtop tldr
+
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+exec $SHELL
+
+pyenv install 3.10
+
+# golang
+wget https://go.dev/dl/go1.19.2.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
+rm go1.19.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
 
 source ~/.profile
