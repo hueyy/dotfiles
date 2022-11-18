@@ -36,3 +36,9 @@ decodeFont() {
 alias youtube-dl="youtube-dl -f best --add-metadata --all-subs --embed-subs --embed-thumbnail"
 
 alias git-commit-no-edit-date="env GIT_AUTHOR_DATE=\"$(git log --no-walk --format=%ad)\" GIT_COMMITTER_DATE=\"$(git log --no-walk --format=%cd)\" git commit --amend"
+
+
+pdf-bookmarker() {
+  input_path="eval $(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
+  (cd /home/huey/projects/pdf-bookmarker; poetry run python src/app.py $input_path)
+}
